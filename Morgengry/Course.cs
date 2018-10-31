@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 
 namespace Morgengry
 {
+
     public class Course
     {
         string name = "";
