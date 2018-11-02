@@ -6,9 +6,11 @@ using System.Threading.Tasks;
 
 namespace Morgengry
 {
-    public abstract class Merchandise
+    public abstract class Merchandise : IValuable
     {
         string itemId = "";
+
+        public abstract double GetValue();
 
         public string ItemId
         {

@@ -8,26 +8,40 @@ namespace Morgengry
 {
     public class Utility
     {
-        public static double GetValueOfBook (Book book)
+        public static double GetValueOfMerchandise(Merchandise merchandise)
         {
-            return book.getPrice();
-        }
 
-        public static double GetValueOfAmulet(Amulet amulet)
-        {
-            if (amulet.getQuality() == Amulet.Level.low) {
-                return 12.5;
-            }
-
-            else if (amulet.getQuality() == Amulet.Level.medium)
+            double value = 0;
+            if (merchandise is Amulet)
             {
-                return 20.0;
+                Amulet amulet = (Amulet)merchandise;
+                if (amulet.Quality == Level.low)
+                {
+                    value = 12.5;
+                }
+
+                else if (amulet.Quality == Level.medium)
+                {
+                    value = 20.0;
+                }
+
+                else
+                {
+                    value = 27.5;
+                }
             }
 
+            else if (merchandise is Book)
+            {
+                Book book = (Book)merchandise;
+                value = book.getPrice();
+            }
             else
             {
-                return 27.5;
+                value = 0;
             }
+
+            return value;
         }
 
         public static double GetValueOfCourse(Course course)

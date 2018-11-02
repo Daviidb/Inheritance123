@@ -6,16 +6,19 @@ using System.Threading.Tasks;
 
 namespace Morgengry
 {
+    public enum Level
+    {
+        low,
+        medium,
+        high
+    }
     public class Amulet : Merchandise
     {
 
         Level quality;
         string design = "";
 
-        public Level getQuality ()
-        {
-            return Quality;
-        }
+
 
         public Level Quality
         {
@@ -28,12 +31,11 @@ namespace Morgengry
             set { design = value; }
         }
 
-        public enum Level
-        {
-            low,
-            medium,
-            high
-        }
+        public  double LowQualityValue { get; set; }
+        public  double MediumQualityValue { get; set; }
+        public  double HighQualityValue { get; set; }
+
+
 
         public Amulet(string itemId, Level quality, string design)
         {
@@ -46,10 +48,8 @@ namespace Morgengry
 
         public Amulet(string itemId) : this(itemId, Level.medium) { }
 
-        public Amulet() { }
-
-        override
-        public string ToString()
+        
+        public override string ToString()
         {
             string result = null;
 
@@ -58,6 +58,26 @@ namespace Morgengry
             result += "Design: " + design;
 
             return result;
+        }
+
+        public override double GetValue()
+        {
+            double value = 0;
+            if (Quality == Level.low)
+            {
+                value = 12.5;
+            }
+
+            else if (Quality == Level.medium)
+            {
+                value = 20.0;
+            }
+
+            else
+            {
+                value = 27.5;
+            }
+            return value;
         }
     }
 }

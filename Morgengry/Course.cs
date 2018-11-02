@@ -7,10 +7,13 @@ using System.Threading.Tasks;
 namespace Morgengry
 {
 
-    public class Course
+    public class Course : IValuable
     {
         string name = "";
         int durationInMinutes = 0;
+        double courseHourValue = 825;
+
+
 
         public string Name
         {
@@ -22,6 +25,11 @@ namespace Morgengry
         {
             get { return durationInMinutes; }
             set { durationInMinutes = value; }
+        }
+
+        public double CourseHourValue {
+            get { return courseHourValue; }
+            set { courseHourValue = value; }
         }
 
         public Course(string name, int durationInMinutes)
@@ -39,8 +47,21 @@ namespace Morgengry
             string result = null;
 
             result += "Name: " + Name + ", ";
-            result += "Duration in Minutes: " + DurationInMinutes;
+            result += "Duration in Minutes: " + DurationInMinutes + ", ";
+            result += "Pris pr påbegyndt time: " + CourseHourValue;
 
+            return result;
+        }
+
+        public double GetValue()
+        {
+            double initialPrice = CourseHourValue;
+            double result = 0.0;
+
+            if (DurationInMinutes != 0)
+            {
+                result = ((DurationInMinutes / 60) + 1) * initialPrice;
+            }
             return result;
         }
     }

@@ -11,7 +11,7 @@ namespace Morgengry
         private string title = "";
         private double price = 0;
 
-        public double getPrice ()
+        public double getPrice()
         {
             return Price;
         }
@@ -37,7 +37,7 @@ namespace Morgengry
         public Book(string itemId, string title) : this(itemId, title, 0) { }
 
         public Book(string itemId) : this(itemId, "") { }
-        
+
         public Book() { }
 
 
@@ -52,5 +52,12 @@ namespace Morgengry
 
             return result;
         }
+        public override double GetValue()
+        {
+            return Price;
+
+        }
+
+
     }
 }
